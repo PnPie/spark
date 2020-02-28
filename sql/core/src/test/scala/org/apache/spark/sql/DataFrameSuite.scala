@@ -817,8 +817,8 @@ class DataFrameSuite extends QueryTest
           assert(parquetDF.inputFiles.nonEmpty)
 
           val csvDir = new File(dir, "csv").getCanonicalPath
-          df.write.json(csvDir)
-          val csvDF = spark.read.json(csvDir)
+          df.write.csv(csvDir)
+          val csvDF = spark.read.csv(csvDir)
           assert(csvDF.inputFiles.nonEmpty)
 
           val unioned = csvDF.union(parquetDF).inputFiles.sorted
